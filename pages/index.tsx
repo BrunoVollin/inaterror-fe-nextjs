@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { GlobalStyle } from '../styles/GlobalStyles'
+import Form from "../src/Form"
 
 const Title = styled.h1`
   font-size: 50px;
@@ -6,5 +8,8 @@ const Title = styled.h1`
 `
 
 export default function Home() {
-  return <Title>My page</Title>
+  return <>
+    <h1>Bom dia</h1>
+    <Form />
+  </>
 }
