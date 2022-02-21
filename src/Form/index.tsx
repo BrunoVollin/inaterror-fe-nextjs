@@ -1,36 +1,36 @@
 import Link from "next/link";
-import React, { useState } from "react";
-import { StyledForm } from "./style";
+import React, { useContext, useState } from "react";
+import { StyledForm, StyledInput } from "./style";
+import { useForm } from "react-hook-form";
+import { AuthContext } from "./../contexts/AuthContext";
+
+type Data = {
+  password: string;
+  userName: string;
+};
 
 export default function Form() {
-  const [name, setName] = useState(0);
-  const [numero, setNumero] = useState(0);
+  const { register, handleSubmit } = useForm();
+  const { signIn } = useContext(AuthContext);
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    const result = name + numero;
-    alert(`${result}`);
-  };
+  async function handleSignIn({ userName, password }: Data) {
+    await signIn({ userName, password });
+  }
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit(handleSignIn)}>
       <label>
-        Primeiro Numero:
-        <input
-          type="number"
-          value={name}
-          onChange={(e) => setName(Number(e.target.value))}
-        />
+        Nome de Usuario:
+        <br />
+        <input {...register("userName")} name="userName" type="text" />
       </label>
       <label>
-        Segundo Numero:
-        <input
-          type="number"
-          value={numero}
-          onChange={(e) => setNumero(Number(e.target.value))}
-        />
+        Senha:
+        <br />
+        <input {...register("password")} name="password" type="text" />
       </label>
-      <input type="submit" value="Submit" />
+      <br />
+      <StyledInput type="submit" value="Submit" />
       <Link href="/page2">
         <a>pagina2</a>
       </Link>
