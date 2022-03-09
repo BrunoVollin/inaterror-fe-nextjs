@@ -23,7 +23,6 @@ export async function recoverUserInformation() {
   await delay();
 
   return {
-		
     user: {
       name: "Bruno",
       email: "bruno@email.com",
