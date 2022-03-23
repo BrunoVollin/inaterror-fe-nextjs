@@ -9,9 +9,9 @@ const axios = require("axios")
 const pagina2: React.FC = () => {
   
   return (
-    <>
-      ascxasxsa
-    </>
+    <div>
+      
+    </div>
   );
 };
 
